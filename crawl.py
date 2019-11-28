@@ -1,5 +1,5 @@
 from countries import countries as countries_dict
-from fycharts import SpotifyCharts
+from SpotifyCharts import SpotifyCharts
 
 def getOutputFile():
     file_name = input('Provide a file name for the data output: ')
