@@ -134,7 +134,6 @@ def getViralMatches(match_song, match_artist):
         artist = row[2].lower()
         if song.find(match_song) != -1 and row[2].lower() == match_artist:
             matches.append(row)
-    os.remove('viral_tmp.csv')
     return matches
 
 def getOverallMatches(match_song, match_artist):
@@ -145,7 +144,6 @@ def getOverallMatches(match_song, match_artist):
         artist = row[2].lower()
         if song.find(match_song) != -1 and row[2].lower() == match_artist:
             matches.append(row)
-    os.remove('overall_tmp.csv')
     return matches
 
 def writeViralData(params):
@@ -154,6 +152,8 @@ def writeViralData(params):
     start = params['start_date']
     end = params['end_date']
     countries = params['countries']
+    if os.path.exists('viral_tmp.csv'):
+        os.remove('viral_tmp.csv')
     for country in countries:
         api.viral50Daily('viral_tmp.csv', start, end, country)
 
@@ -163,6 +163,8 @@ def writeOverallData(params):
     start = params['start_date']
     end = params['end_date']
     countries = params['countries']
+    if os.path.exists('overall_tmp.csv'):
+        os.remove('overall_tmp.csv')
     for country in countries:
         api.top200Daily('overall_tmp.csv', start, end, country)
 
