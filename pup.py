@@ -41,6 +41,9 @@ def getCountryRankDataViral(country_data, country, date_list):
             date_index += 1
         country_rank_list.append(int(datum[0]))
         date_index += 1
+    end_dash_num = len(date_list) - len(country_rank_list)
+    if end_dash_num > 0:
+        country_rank_list.extend(['-'] * end_dash_num)
     country_rank_list.insert(0, country.title())
     country_rank_list.insert(1, getPeakRank(country_rank_list[1:]))
     return country_rank_list
@@ -55,6 +58,9 @@ def getCountryRankDataOverall(country_data, country, date_list):
             date_index += 1
         country_rank_list.append(int(datum[0]))
         date_index += 1
+    end_dash_num = len(date_list) - len(country_rank_list)
+    if end_dash_num > 0:
+        country_rank_list.extend(['-'] * end_dash_num)
     country_rank_list.insert(0, country.title())
     country_rank_list.insert(1, getPeakRank(country_rank_list[1:]))
     return country_rank_list
